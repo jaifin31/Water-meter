@@ -5,7 +5,7 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="d-flex align-items-center">Nova</h1>
+        <h1 class="d-flex align-items-center">Smart Meter</h1>
       </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -16,9 +16,10 @@
           <li><a href="index.php" class="active">Home</a></li>
           <li><a href="about.php">About</a></li>
           <li><a href="members.php">Members</a></li>
-          <li><a href="portfolio.php">Portfolio</a></li>
-          <li><a href="team.php">Team</a></li>
+          <li><a href="supervisor.php">Supervisors</a></li>
+          <li><a href="device.php">Device</a></li>
           <li><a href="contact.php">Contact</a></li>
+          <li><a href="login.php">Login</a></li>
         </ul>
       </nav><!-- .navbar -->
 
