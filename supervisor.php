@@ -293,7 +293,6 @@
                 </div>
             </div>
         </div>
-
     </main><!-- End #main -->
 
     <?php require 'footer.php' ?>

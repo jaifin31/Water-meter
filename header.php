@@ -18,7 +18,6 @@
           <li><a href="members.php">Members</a></li>
           <li><a href="supervisor.php">Supervisors</a></li>
           <li><a href="device.php">Device</a></li>
-          <li><a href="contact.php">Contact</a></li>
           <li><a href="login.php">Login</a></li>
         </ul>
       </nav><!-- .navbar -->

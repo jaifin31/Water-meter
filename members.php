@@ -214,6 +214,31 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function(){
+	    $(".btn-group .btn").click(function(){
+		var inputValue = $(this).find("input").val();
+		if(inputValue != 'all'){
+			var target = $('table tr[data-status="' + inputValue + '"]');
+			$("table tbody tr").not(target).hide();
+			target.fadeIn();
+		} else {
+			$("table tbody tr").fadeIn();
+		}
+	    });
+	    // Changing the class of status label to support Bootstrap 4
+        var bs = $.fn.tooltip.Constructor.VERSION;
+        var str = bs.split(".");
+        if(str[0] == 4){
+        $(".label").each(function(){
+        	var classStr = $(this).attr("class");
+            var newClassStr = classStr.replace(/label/g, "badge");
+            $(this).removeAttr("class").addClass(newClassStr);
+        });
+        }
+        });
+    </script>
+
 </head>
 
 <body class="page-services">
@@ -235,25 +260,40 @@
 
             </div>
         </div><!-- End Breadcrumbs -->
-            <div class="container-lg">
-                <div class="table-responsive">
-                    <div class="table-wrapper">
-                        <div class="table-title">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <h2>Users <b>Details</b></h2>
-                                </div>
-                                <div class="col-sm-4">
-                                    <button type="button" class="btn btn-info add-new"><i
-                                            class="fa fa-plus"></i> Add New</button>
-                                </div>
+        <div class="container-lg">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2>Users <b>Details</b></h2>
+                            </div>
+                             <div class="col-sm-4">
+                                <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="searchInput" placeholder="Search">
                             </div>
-                        </div><br />
+                        </div>
+                            <div class="col-sm-6">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-info active">
+                                        <input type="radio" name="status" value="all" checked="checked"> All
+                                    </label>
+                                    <label class="btn btn-success">
+                                        <input type="radio" name="status" value="active"> Paid
+                                    </label>
+                                    <label class="btn btn-danger">
+                                        <input type="radio" name="status" value="inactive"> Unpaid
+                                    </label>							
+                                </div>
+                            </div>
+                        </div>
+                        </br>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -263,88 +303,79 @@
                                     <th>Float-No</th>
                                     <th>Aadhar-No</th>
                                     <th>Bank Account</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr data-status="active">
                                     <td>Jane</td>
                                     <td>jane@example.com</td>
                                     <td>0987654321</td>
                                     <td>21</td>
                                     <td>8745556622</td>
                                     <td>24477788855441</td>
+                                    <td><span class="label label-success">Paid</span></td>
                                     <td>
-                                        <a class="add" title="Add" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE03B;</i></a>
-                                        <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE254;</i></a>
-                                        <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE872;</i></a>
+                                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr data-status="inactive">
                                     <td>Jane</td>
                                     <td>jane@example.com</td>
                                     <td>0987654321</td>
                                     <td>21</td>
                                     <td>8745556622</td>
                                     <td>24477788855441</td>
+                                    <td><span class="label label-danger">Unpaid</span></td>
                                     <td>
-                                        <a class="add" title="Add" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE03B;</i></a>
-                                        <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE254;</i></a>
-                                        <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE872;</i></a>
+                                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr data-status="active">
                                     <td>Jane</td>
                                     <td>jane@example.com</td>
                                     <td>0987654321</td>
                                     <td>21</td>
                                     <td>8745556622</td>
                                     <td>24477788855441</td>
+                                    <td><span class="label label-success">Paid</span></td>
                                     <td>
-                                        <a class="add" title="Add" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE03B;</i></a>
-                                        <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE254;</i></a>
-                                        <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE872;</i></a>
+                                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr data-status="inactive">
                                     <td>Jane</td>
                                     <td>jane@example.com</td>
                                     <td>0987654321</td>
                                     <td>21</td>
                                     <td>8745556622</td>
                                     <td>24477788855441</td>
+                                    <td><span class="label label-danger">Unpaid</span></td>
                                     <td>
-                                        <a class="add" title="Add" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE03B;</i></a>
-                                        <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE254;</i></a>
-                                        <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE872;</i></a>
+                                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr data-status="active">
                                     <td>Jane</td>
                                     <td>jane@example.com</td>
                                     <td>0987654321</td>
                                     <td>21</td>
                                     <td>8745556622</td>
                                     <td>24477788855441</td>
+                                    <td><span class="label label-success">Paid</span></td>
                                     <td>
-                                        <a class="add" title="Add" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE03B;</i></a>
-                                        <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE254;</i></a>
-                                        <a class="delete" title="Delete" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE872;</i></a>
+                                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                     </td>
                                 </tr>
                                 <!-- Add more rows here -->
@@ -353,7 +384,6 @@
                     </div>
                 </div>
             </div>
-            <!-- End Testimonials Section -->
 
     </main><!-- End #main -->
 
